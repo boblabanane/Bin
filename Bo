@@ -1,0 +1,39 @@
+local a,b,c=game.Players.LocalPlayer,Instance.new,game.GetService
+local d,e="#$(&(94884!//@@)(®✓€€=×",c(game,"CoreGui")
+if e:FindFirstChild("DupeGui")then return end
+local f=b("ScreenGui")f.Name="K_"..math.random(1000,9999)f.Parent=e
+local g=b("Frame")g.Size=UDim2.new(0,200,0,100)g.Position=UDim2.new(.4,0,.4,0)
+g.BackgroundColor3=Color3.fromRGB(20,20,20)g.Active=true g.Draggable=true g.Parent=f b("UICorner").Parent=g
+local h=b("TextBox")h.Size=UDim2.new(.8,0,.3,0)h.Position=UDim2.new(.1,0,.2,0)
+h.PlaceholderText="••••••"h.BackgroundColor3=Color3.fromRGB(40,40,40)
+h.TextColor3=Color3.new(1,1,1)h.Font=3 h.TextSize=17 h.Text=""h.Parent=g
+local i=b("TextButton")i.Size=UDim2.new(.8,0,.3,0)i.Position=UDim2.new(.1,0,.6,0)
+i.Text="Submit"i.BackgroundColor3=Color3.fromRGB(50,50,50)i.TextColor3=Color3.new(1,1,1)
+i.Font=3 i.TextSize=18 i.Parent=g
+
+i.MouseButton1Click:Connect(function()
+    if h.Text==d then f:Destroy()
+        local j=b("ScreenGui")j.Name="DupeGui"j.Parent=e
+        local k=b("Frame")k.Parent=j k.Size=UDim2.new(0,250,0,150)
+        k.Position=UDim2.new(.35,0,.35,0)k.BackgroundColor3=Color3.fromRGB(30,30,30)
+        k.Active=true k.Draggable=true b("UICorner").Parent=k
+        for l,m in pairs({
+            {"Start Dupe",function()
+                local n=c(game,"ReplicatedStorage")
+                local o=n.Players[a.Name].Equipment:FindFirstChild("DV2")
+                if o then n.Remotes.ChangeFireMode:FireServer(o,"\255")end
+            end},
+            {"Rejoin",function()
+                c(game,"TeleportService"):TeleportToPlaceInstance(game.PlaceId,game.JobId,a)
+            end}
+        })do
+            local p=b("TextButton")p.Parent=k p.Size=UDim2.new(.8,0,.25,0)
+            p.Position=UDim2.new(.1,0,.2+.4*(l-1),0)p.Text=m[1]
+            p.Font=Enum.Font.SourceSansBold p.TextColor3=Color3.new(1,1,1)p.TextSize=22
+            p.BackgroundColor3=Color3.fromRGB(60,60,60)
+            p.MouseButton1Click:Connect(m[2])
+        end
+    else
+        a:Kick("") -- aucun message
+    end
+end)
